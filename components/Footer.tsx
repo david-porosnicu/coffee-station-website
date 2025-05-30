@@ -1,4 +1,4 @@
-import { Coffee, MapPin, Phone, Mail, Clock } from "lucide-react"
+import { Coffee, MapPin, Phone, Mail, Clock } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -9,11 +9,11 @@ export default function Footer() {
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <Coffee className="h-8 w-8 text-coffee-300" />
-              <span className="text-xl font-bold">Brew & Bean</span>
+              <span className="text-xl font-bold">Coffee Station</span>
             </div>
             <p className="text-coffee-200 mb-4">
-              Premium coffee experience with AI-powered customer service. Serving the finest beans from around the
-              world.
+              Premium coffee experience with AI-powered customer service.
+              Serving the finest blends in Bucharest.
             </p>
           </div>
 
@@ -23,7 +23,9 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4 text-coffee-300" />
-                <span className="text-coffee-200">123 Coffee St, Bean City</span>
+                <span className="text-coffee-200">
+                  123 Bean Blvd, Bucharest, Romania
+                </span>
               </div>
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-coffee-300" />
@@ -31,7 +33,9 @@ export default function Footer() {
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4 text-coffee-300" />
-                <span className="text-coffee-200">hello@brewandbean.com</span>
+                <span className="text-coffee-200">
+                  coffee.station@email.com
+                </span>
               </div>
             </div>
           </div>
@@ -43,8 +47,10 @@ export default function Footer() {
               <div className="flex items-center space-x-2">
                 <Clock className="h-4 w-4 text-coffee-300" />
                 <div className="text-coffee-200">
-                  <div>Mon-Fri: 6AM-8PM</div>
-                  <div>Sat-Sun: 7AM-9PM</div>
+                  <div>Mon-Thu: 7AM-7PM</div>
+                  <div>Fri: 7AM-9PM</div>
+                  <div>Sat: 8AM-9PM</div>
+                  <div>Sun: 8AM-5PM</div>
                 </div>
               </div>
             </div>
@@ -52,9 +58,11 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-coffee-800 mt-8 pt-8 text-center">
-          <p className="text-coffee-300">© 2024 Brew & Bean Coffee Shop. All rights reserved.</p>
+          <p className="text-coffee-300">
+            © 2024 Coffee Station. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
-  )
+  );
 }

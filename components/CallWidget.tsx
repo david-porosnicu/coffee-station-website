@@ -51,7 +51,19 @@ export default function CallWidget({
     vapiScriptRef.current = script;
 
     script.onload = function () {
-      // Optionally, you can initialize or configure here
+      if (window.vapiSDK) {
+        window.vapiSDK.run({
+          apiKey: process.env.NEXT_PUBLIC_VAPI_API_KEY,
+          assistant: process.env.NEXT_PUBLIC_VAPI_BOT_ID,
+          config: {
+            widget: {
+              position: "bottom-right",
+              size: "large",
+              openOnLoad: true,
+            },
+          },
+        });
+      }
     };
 
     document.body.appendChild(script);
@@ -96,57 +108,6 @@ export default function CallWidget({
       speaker,
     };
     setTranscript((prev) => [...prev, newMessage]);
-  };
-
-  const startCall = async () => {
-    if (!window.vapiSDK) {
-      console.error("Vapi SDK not loaded");
-      return;
-    }
-    if (!VAPI_API_KEY || !VAPI_BOT_ID) {
-      console.error("Vapi API key or Bot ID not configured");
-      return;
-    }
-    setIsConnecting(true);
-    setTranscript([]);
-
-    console.log("VAPI_API_KEY", VAPI_API_KEY);
-    console.log("VAPI_BOT_ID", VAPI_BOT_ID);
-    console.log("window.vapiSDK", window.vapiSDK);
-
-    window.vapiSDK.run({
-      apiKey: VAPI_API_KEY,
-      assistant: VAPI_BOT_ID,
-      config: {
-        widget: {
-          position: "bottom-right",
-          size: "large",
-        },
-      },
-    });
-    setIsCallActive(true);
-    setIsConnecting(false);
-    callStartTime.current = new Date();
-    startDurationTimer();
-    onCallStart?.();
-  };
-
-  const endCall = () => {
-    // The CDN widget may not expose a stop method; if it does, call it here
-    setIsCallActive(false);
-    setIsConnecting(false);
-    stopDurationTimer();
-    onCallEnd?.();
-  };
-
-  const toggleMute = () => {
-    setIsMuted(!isMuted);
-    // The CDN widget may not expose mute control; if it does, call it here
-  };
-
-  const toggleSpeaker = () => {
-    setIsSpeakerOn(!isSpeakerOn);
-    // The CDN widget may not expose speaker control; if it does, call it here
   };
 
   const formatDuration = (seconds: number) => {
@@ -197,7 +158,6 @@ export default function CallWidget({
       >
         {transcript.length === 0 ? (
           <div className="text-center text-gray-500 mt-8">
-            <Phone className="h-12 w-12 mx-auto mb-4 text-gray-300" />
             <p>Start a call to see the conversation transcript</p>
           </div>
         ) : (
@@ -231,70 +191,6 @@ export default function CallWidget({
             ))}
           </div>
         )}
-      </div>
-
-      {/* Controls */}
-      <div className="p-6">
-        <div className="flex items-center justify-center space-x-4">
-          {!isCallActive && !isConnecting ? (
-            <button
-              onClick={startCall}
-              className="bg-green-500 hover:bg-green-600 text-white p-4 rounded-full transition-colors duration-200 shadow-lg"
-            >
-              <Phone className="h-6 w-6" />
-            </button>
-          ) : (
-            <>
-              <button
-                onClick={toggleMute}
-                className={`p-3 rounded-full transition-colors duration-200 ${
-                  isMuted
-                    ? "bg-red-500 hover:bg-red-600 text-white"
-                    : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-                }`}
-              >
-                {isMuted ? (
-                  <MicOff className="h-5 w-5" />
-                ) : (
-                  <Mic className="h-5 w-5" />
-                )}
-              </button>
-
-              <button
-                onClick={endCall}
-                disabled={isConnecting}
-                className="bg-red-500 hover:bg-red-600 text-white p-4 rounded-full transition-colors duration-200 shadow-lg disabled:opacity-50"
-              >
-                <PhoneOff className="h-6 w-6" />
-              </button>
-
-              <button
-                onClick={toggleSpeaker}
-                className={`p-3 rounded-full transition-colors duration-200 ${
-                  isSpeakerOn
-                    ? "bg-coffee-600 hover:bg-coffee-700 text-white"
-                    : "bg-gray-200 hover:bg-gray-300 text-gray-700"
-                }`}
-              >
-                {isSpeakerOn ? (
-                  <Volume2 className="h-5 w-5" />
-                ) : (
-                  <VolumeX className="h-5 w-5" />
-                )}
-              </button>
-            </>
-          )}
-        </div>
-
-        <div className="text-center mt-4">
-          <p className="text-sm text-gray-600">
-            {!isCallActive &&
-              !isConnecting &&
-              "Click the phone icon to start talking with our AI assistant"}
-            {isConnecting && "Connecting to our voice assistant..."}
-            {isCallActive && "Speak naturally - our AI assistant is listening"}
-          </p>
-        </div>
       </div>
     </div>
   );
