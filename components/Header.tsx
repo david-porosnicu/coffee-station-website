@@ -15,7 +15,7 @@ export default function Header() {
           <Link href="/" className="flex items-center space-x-2">
             <Coffee className="h-8 w-8 text-coffee-600" />
             <span className="text-xl font-bold text-coffee-800">
-              Brew & Bean
+              Coffee Station
             </span>
           </Link>
 
