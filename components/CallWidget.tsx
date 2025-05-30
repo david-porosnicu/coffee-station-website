@@ -3,9 +3,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Phone, PhoneOff, Mic, MicOff, Volume2, VolumeX } from "lucide-react";
 
-const VAPI_API_KEY = process.env.NEXT_PUBLIC_VAPI_API_KEY;
-const VAPI_BOT_ID = process.env.NEXT_PUBLIC_VAPI_BOT_ID;
-
 // Add this declaration to fix linter errors for window.vapiSDK
 declare global {
   interface Window {
@@ -30,8 +27,6 @@ export default function CallWidget({
   onCallEnd,
 }: CallWidgetProps) {
   const [isCallActive, setIsCallActive] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const [isSpeakerOn, setIsSpeakerOn] = useState(true);
   const [transcript, setTranscript] = useState<TranscriptMessage[]>([]);
   const [isConnecting, setIsConnecting] = useState(false);
   const [callDuration, setCallDuration] = useState(0);

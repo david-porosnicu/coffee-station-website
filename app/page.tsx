@@ -243,7 +243,7 @@ export default function Home() {
                 <div>
                   <h4 className="font-semibold text-coffee-800">Address</h4>
                   <p className="text-coffee-600">
-                    123 Coffee Street, Bean City, BC 12345
+                    123 Bean Blvd, Bucharest, Romania
                   </p>
                 </div>
                 <div>
@@ -252,7 +252,7 @@ export default function Home() {
                 </div>
                 <div>
                   <h4 className="font-semibold text-coffee-800">Email</h4>
-                  <p className="text-coffee-600">hello@brewandbean.com</p>
+                  <p className="text-coffee-600">coffee.station@email.com</p>
                 </div>
               </div>
             </div>
@@ -265,16 +265,20 @@ export default function Home() {
               </div>
               <div className="space-y-3">
                 <div className="flex justify-between">
-                  <span className="text-coffee-800">Monday - Friday</span>
-                  <span className="text-coffee-600">6:00 AM - 8:00 PM</span>
+                  <span className="text-coffee-800">Mon-Thu</span>
+                  <span className="text-coffee-600">7:00 AM - 7:00 PM</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-coffee-800">Friday</span>
+                  <span className="text-coffee-600">7:00 AM - 9:00 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-coffee-800">Saturday</span>
-                  <span className="text-coffee-600">7:00 AM - 9:00 PM</span>
+                  <span className="text-coffee-600">8:00 AM - 9:00 PM</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-coffee-800">Sunday</span>
-                  <span className="text-coffee-600">7:00 AM - 9:00 PM</span>
+                  <span className="text-coffee-600">8:00 AM - 5:00 PM</span>
                 </div>
               </div>
             </div>
