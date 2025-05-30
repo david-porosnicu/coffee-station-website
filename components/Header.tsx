@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Coffee, Phone, Menu, X } from "lucide-react"
-import { useState } from "react"
+import Link from "next/link";
+import { Coffee, Phone, Menu, X } from "lucide-react";
+import { useState } from "react";
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <header className="bg-white shadow-sm border-b border-coffee-100">
@@ -14,32 +14,50 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <Coffee className="h-8 w-8 text-coffee-600" />
-            <span className="text-xl font-bold text-coffee-800">Brew & Bean</span>
+            <span className="text-xl font-bold text-coffee-800">
+              Brew & Bean
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="text-coffee-700 hover:text-coffee-900 font-medium">
+            <Link
+              href="/"
+              className="text-coffee-700 hover:text-coffee-900 font-medium"
+            >
               Home
             </Link>
-            <Link href="/about" className="text-coffee-700 hover:text-coffee-900 font-medium">
+            <Link
+              href="/about"
+              className="text-coffee-700 hover:text-coffee-900 font-medium"
+            >
               About
             </Link>
-            <Link href="/menu" className="text-coffee-700 hover:text-coffee-900 font-medium">
+            <Link
+              href="/menu"
+              className="text-coffee-700 hover:text-coffee-900 font-medium"
+            >
               Menu
             </Link>
-            <Link href="/contact" className="text-coffee-700 hover:text-coffee-900 font-medium">
-              Contact
-            </Link>
-            <Link href="/call" className="btn-primary flex items-center space-x-2">
+            <Link
+              href="/call"
+              className="btn-primary flex items-center space-x-2"
+            >
               <Phone className="h-4 w-4" />
               <span>Call Us</span>
             </Link>
           </nav>
 
           {/* Mobile menu button */}
-          <button className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X className="h-6 w-6 text-coffee-700" /> : <Menu className="h-6 w-6 text-coffee-700" />}
+          <button
+            className="md:hidden p-2"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? (
+              <X className="h-6 w-6 text-coffee-700" />
+            ) : (
+              <Menu className="h-6 w-6 text-coffee-700" />
+            )}
           </button>
         </div>
 
@@ -47,19 +65,28 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-coffee-100">
             <nav className="flex flex-col space-y-4">
-              <Link href="/" className="text-coffee-700 hover:text-coffee-900 font-medium">
+              <Link
+                href="/"
+                className="text-coffee-700 hover:text-coffee-900 font-medium"
+              >
                 Home
               </Link>
-              <Link href="/about" className="text-coffee-700 hover:text-coffee-900 font-medium">
+              <Link
+                href="/about"
+                className="text-coffee-700 hover:text-coffee-900 font-medium"
+              >
                 About
               </Link>
-              <Link href="/menu" className="text-coffee-700 hover:text-coffee-900 font-medium">
+              <Link
+                href="/menu"
+                className="text-coffee-700 hover:text-coffee-900 font-medium"
+              >
                 Menu
               </Link>
-              <Link href="/contact" className="text-coffee-700 hover:text-coffee-900 font-medium">
-                Contact
-              </Link>
-              <Link href="/call" className="btn-primary flex items-center justify-center space-x-2 w-full">
+              <Link
+                href="/call"
+                className="btn-primary flex items-center justify-center space-x-2 w-full"
+              >
                 <Phone className="h-4 w-4" />
                 <span>Call Us</span>
               </Link>
@@ -68,5 +95,5 @@ export default function Header() {
         )}
       </div>
     </header>
-  )
+  );
 }
